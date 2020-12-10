@@ -22,21 +22,7 @@ znp = np.poly1d(pz)
 x = lambda t : xnp(t)
 y = lambda t : ynp(t)
 z = lambda t : znp(t)
-#x = lambda t: t
-#Dx = lambda t: derivative(x, t, dx=1e-8)
-#y = lambda t: t*t
-#Dy = lambda t: derivative(y, t, dx=1e-8)
-#z = lambda t: t
-#Dz = lambda t: derivative(z, t, dx=1e-8)
-#def arclength( min, max):
-    #return quad(lambda t: np.sqrt(Dx(t)**2 + Dy(t)**2+Dz(t)**2), min , max)
 
-#def x(t):
-#    return xnp(t)
-#def y(t):
-#    return ynp(t)
-#def z(t):
-#    return znp(t)
 #total arc length calculation at interval [min,max]
 def arclength1(min,max):
     solutions = np.array([0,0])
@@ -54,8 +40,6 @@ def integrand(t):
 
     return sqrt(dx(t)**2+dy(t)**2+ dz(t)**2)
 
-
-
 def curve_length(t0, S, length,quadtol):
     integral = quad(S, 0, t0,epsabs=quadtol,epsrel=quadtol)
 
@@ -63,7 +47,6 @@ def curve_length(t0, S, length,quadtol):
 #numeric solver: for given arc length determine function parameter t
 def solve_t(curve_diff, length,opttol=1.e-15,quadtol=1e-10):
     return fsolve(curve_length, 0.0, (curve_diff, length,quadtol), xtol = opttol)[0]
-
 
 def equidistantSampler(min, max, samples):
     equidistantSet =[]
@@ -94,5 +77,3 @@ ax.set_zlabel('z')
 
 ax.legend()
 plt.show()
-#https://stackoverflow.com/questions/46381798/wrong-result-for-arc-length-using-scipy
-#https://stackoverflow.com/questions/10328050/finding-the-location-of-a-given-arc-distance-along-a-parameterized-curve-in-pyth
